@@ -21,3 +21,22 @@ app.get('/api/updates', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
+
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Software Version Release API',
+      version: '1.0.0',
+      description: 'API to find software version release dates',
+    },
+  },
+  apis: ['./routes/*.js'], // Adjust path to where your route files are
+};
+
+const specs = swaggerJsdoc(options);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
