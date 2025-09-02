@@ -3,7 +3,6 @@ const app = express();
 const path = require('path');
 const updates = require('./data/updates.json');
 
-const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 
@@ -104,4 +103,5 @@ const options = {
 
 const specs = swaggerJsdoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
 
